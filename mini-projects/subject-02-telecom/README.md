@@ -1,43 +1,78 @@
-# Predictive analysis: telecom customer churn
+# Predictive Analysis: Telecom Customer Churn
 
-This project implements a predictive modeling pipeline to forecast customer
-churn for a telecommunications provider. By using exploratory data analysis
-and classification algorithms, it identifies key factors contributing to
-customer attrition.
+This project implements an end-to-end predictive classification pipeline to forecast
+customer attrition for a telecommunications operator, isolating high-risk customer
+cohorts and identifying primary drivers of account churn.
 
-## Methodology
+---
 
-The analysis follows a standard data science lifecycle:
+## Project Structure
 
-1. Data ingestion: Loading and cleaning telecom usage data.
-2. Exploratory data analysis (EDA): Identifying correlations between usage
-   patterns and churn rates.
-3. Feature engineering: Encoding categorical variables and scaling numerical
-   features.
-4. Classification: Training models to predict the probability of customer
-   attrition.
+```text
+subject-02-telecom/
+├── README.md                          # Technical specification and model benchmarks
+├── telecom-churn-prediction.ipynb     # Interactive machine learning pipeline notebook
+└── telecom-churn-report.pptx          # Executive slides summarizing model accuracy and retention KPIs
+```
 
-## Technical stack
+### File Responsibilities
 
-- Language: Python 3.10 or later
-- Data processing: Pandas, NumPy
-- Visualization: Matplotlib, Seaborn
+- **`telecom-churn-prediction.ipynb`**: Complete executable Python notebook implementing data cleaning, tenure feature engineering, exploratory correlation heatmaps, categorical encoding, train/test splitting, and multi-model classification comparison.
+- **`telecom-churn-report.pptx`**: Business synthesis presenting customer lifetime value (CLV) retention recommendations.
 
-## Project structure
+---
 
-- `telecom-churn-prediction.ipynb`: The main analysis and modeling notebook.
-- `telecom-churn-report.pptx`: An executive summary and report of findings.
+## Architecture & Machine Learning Pipeline
 
-## Getting started
+```text
+Raw Subscriber Data (Contract Type, Monthly Charges, Tech Support, Tenure)
+                               |
+                               v
+               +-------------------------------+
+               | Preprocessing & Encoding      |
+               | - Binary & One-Hot Encoding   |
+               | - Numerical Feature Scaling   |
+               +-------------------------------+
+                               |
+                               v
+               +-------------------------------+
+               | Supervised Classification     |
+               | - Logistic Regression         |
+               | - Random Forest Classifier    |
+               | - Gradient Boosting           |
+               +-------------------------------+
+                               |
+                               v
+               +-------------------------------+
+               | Evaluation & Retention Action |
+               | - Precision, Recall, ROC-AUC  |
+               | - Churn Probability Scoring   |
+               +-------------------------------+
+```
 
-1. Clone the repository:
-   ```bash
-   git clone git@github.com:yss-ef/machine-learning-portfolio.git
-   ```
-2. Install the required libraries:
-   ```bash
-   pip install pandas numpy matplotlib seaborn
-   ```
+---
 
-Authored by Youssef Fellah.
-Developed for the Engineering Cycle at Mundiapolis University.
+## Execution Instructions
+
+Launch Jupyter and run the notebook:
+
+```bash
+cd mini-projects/subject-02-telecom
+jupyter notebook telecom-churn-prediction.ipynb
+```
+
+---
+
+## Technology Stack
+
+- **Language:** Python 3
+- **Data Engineering:** Pandas, NumPy
+- **Machine Learning:** Scikit-learn (`LogisticRegression`, `RandomForestClassifier`, `StandardScaler`, `metrics`)
+- **Visualization:** Matplotlib, Seaborn
+
+---
+
+## Author
+
+- **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))
+- **Institution:** Mundiapolis University, Engineering Cycle

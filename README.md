@@ -1,47 +1,79 @@
-# Machine learning portfolio
+# Machine Learning Laboratory Portfolio
 
-This repository contains a professional collection of machine learning
-projects and analytical labs. The work focuses on predictive modeling,
-customer intelligence, and algorithmic optimization.
+This repository hosts practical implementations, predictive modeling pipelines,
+and applied intelligence architectures developed for the Machine Learning and
+Data Science curriculum at Mundiapolis University.
 
-## Executive summaries
+---
 
-### E-commerce customer segmentation
+## Laboratory & Project Overview
 
-This project focuses on customer intelligence, utilizing unsupervised learning
-algorithms (K-means and hierarchical clustering) to segment a retail customer
-base. By analyzing income and spending behavior, the model identifies five
-distinct customer segments, enabling targeted marketing and improved
-retention.
+| Module | Category | Core Methodology | Primary Deliverables | Reference |
+| :--- | :--- | :--- | :--- | :--- |
+| **[subject-01-ecommerce](./mini-projects/subject-01-ecommerce)** | Business Project | Customer segmentation, K-Means clustering, Agglomerative Hierarchical Clustering (Ward linkage), Elbow heuristic | 5 behavioral segments & dendrograms | [Notebook](./mini-projects/subject-01-ecommerce/customer-segmentation.ipynb) |
+| **[subject-02-telecom](./mini-projects/subject-02-telecom)** | Business Project | Supervised churn classification, feature correlation heatmaps, class probability scoring | Churn predictor & executive report | [Notebook](./mini-projects/subject-02-telecom/telecom-churn-prediction.ipynb) |
+| **[subject-03-student-success](./mini-projects/subject-03-student-success)** | Capstone Project | Academic risk factor discovery, Random Forest feature importance, PCA, interactive Flask decision tool | Predictive Flask web app | [Notebook](./mini-projects/subject-03-student-success/student-success-analysis.ipynb)<br>[App](./mini-projects/subject-03-student-success/web-app/app.py) |
+| **[clustering](./labs-tp/clustering)** | Algorithmic Lab | Unsupervised benchmark comparison: K-Means, Hierarchical (CAH), and DBSCAN density clustering | Multi-model clustering comparison | [Notebooks](./labs-tp/clustering) |
+| **[regression](./labs-tp/regression)** | Algorithmic Lab | Analytical Ordinary Least Squares (OLS) vs vectorized Gradient Descent optimization | Convergence curves & loss graphs | [Scripts](./labs-tp/regression) |
 
-### Telecom churn prediction
+---
 
-This predictive modeling pipeline forecasts customer churn for a
-telecommunications provider. Using classification algorithms and exploratory
-data analysis, the project identifies key attrition drivers to support
-proactive customer engagement.
+## General Running Instructions
 
-### Student success analysis and platform
+### Prerequisites
 
-This project improves academic outcomes for high school students by combining
-deep exploratory analysis with a Flask-based interactive platform. It uses
-K-means clustering and random forest importance to identify risk factors and
-provide pedagogical recommendations.
+- **Python:** 3.10 or higher
+- **Git**
+- **Virtual Environment Tooling:** `venv`
 
-## Repository structure
+### Setup and Environment
 
-- `data/`: Specialized industry datasets.
-- `mini-projects/`: End-to-end business subjects covering e-commerce, telecom,
-  and education.
-- `labs-tp/`: Technical labs and algorithm implementations for clustering,
-  regression, and data manipulation.
+1. **Clone the repository:**
+   ```bash
+   git clone git@github.com:ind4x/machine-learning-portfolio.git
+   cd machine-learning-portfolio
+   ```
 
-## Tech stack
+2. **Create and activate a virtual environment:**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
 
-- Languages: Python
-- Libraries: Scikit-learn, Pandas, NumPy
-- Visualization: Matplotlib, Seaborn
-- Tools: Jupyter Notebooks, Google Colab
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Authored by Youssef Fellah.
-Developed for the Engineering Cycle at Mundiapolis University.
+### Executing Modules
+
+#### Jupyter Notebooks
+Launch Jupyter from the repository root:
+```bash
+jupyter notebook
+```
+Navigate to any notebook in `mini-projects/` or `labs-tp/` to execute analysis and training cells.
+
+#### Interactive Student Success Web App
+```bash
+cd mini-projects/subject-03-student-success/web-app
+python3 app.py
+```
+Open `http://127.0.0.1:5000` in a web browser.
+
+---
+
+## Technology Stack
+
+- **Language:** Python 3
+- **Data Engineering:** NumPy, Pandas
+- **Machine Learning:** Scikit-learn (`KMeans`, `AgglomerativeClustering`, `DBSCAN`, `RandomForestClassifier`, `PCA`)
+- **Web App:** Flask
+- **Data Visualization:** Matplotlib, Seaborn
+
+---
+
+## Author
+
+- **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))
+- **Institution:** Mundiapolis University, Engineering Cycle

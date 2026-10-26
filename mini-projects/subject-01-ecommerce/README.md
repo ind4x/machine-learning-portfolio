@@ -1,66 +1,89 @@
-# E-commerce customer segmentation: retail analytics
+# E-Commerce Customer Segmentation: Retail Analytics
 
-This project uses unsupervised learning algorithms to segment a retail
-customer base into distinct groups. The segmentation is based on annual
-income, spending behavior, and demographic profiles.
+This project utilizes unsupervised learning algorithms to partition a retail customer base
+into distinct behavioral segments based on annual income, spending scores, and demographic
+profiles.
 
-## Machine learning concepts
+---
 
-### 1. Unsupervised learning and clustering
+## Project Structure
 
-Clustering identifies hidden patterns in data by grouping similar data points
-together. It does not rely on predefined labels.
+```text
+subject-01-ecommerce/
+├── README.md                          # Technical specification and segmentation analysis
+├── customer-segmentation.ipynb        # Interactive data science notebook
+├── customer-segmentation-report.pptx  # Executive briefing and strategic presentation
+├── k-means-elbow-method.png           # WCSS inertia curve identifying optimal k=5
+├── k-means-clusters-plot.png          # 2D scatter plot of customer clusters
+├── hierarchical-dendrogram.png        # Ward linkage tree clustering hierarchy
+├── eda-distribution-1.png             # Age distribution histogram
+├── eda-distribution-2.png             # Annual income distribution
+└── eda-distribution-3.png             # Spending score distribution
+```
 
-### 2. K-means clustering
+### File Responsibilities
 
-K-means is a centroid-based algorithm that partitions observations into
-distinct clusters.
-- Centroid logic: The algorithm iteratively assigns points to the nearest
-  cluster center and updates the center based on the mean of those points.
-- Elbow method: The optimal number of clusters is determined by calculating
-  the within-cluster sum of squares (WCSS).
+- **`customer-segmentation.ipynb`**: Complete executable Python pipeline evaluating exploratory distributions, Elbow method inertia curves, silhouette validation scores, K-Means cluster fitting, and Agglomerative Hierarchical Clustering.
+- **`customer-segmentation-report.pptx`**: Commercial analysis translating mathematical clusters into marketing personas (e.g., High-Income/High-Spenders vs Budget-Conscious).
 
-### 3. Hierarchical clustering (CAH)
+---
 
-Agglomerative hierarchical clustering builds a hierarchy of clusters.
-- Dendrograms: These tree-like diagrams visualize the sequence of merges and
-  help determine the optimal number of clusters.
-- Linkage criteria: The project uses Ward's method to minimize variance within
-  each cluster during merging.
+## Architecture & Segmentation Methodology
 
-## Data analysis and modeling logic
+```text
+Raw Customer Demographic Data
+             |
+             v
++-------------------------------+
+| Preprocessing & Normalization | ---> Null check, Outlier detection, MinMax/StandardScaler
++-------------------------------+
+             |
+             +---------------------------------------+
+             |                                       |
+             v                                       v
++-------------------------------+       +-------------------------------+
+|      K-Means Clustering       |       |   Hierarchical Clustering     |
+| - Elbow Inertia (WCSS)        |       | - Agglomerative bottom-up     |
+| - Centroid distance update    |       | - Ward minimum variance       |
+| - 5 Distinct Cohorts          |       | - Dendrogram threshold cut    |
++-------------------------------+       +-------------------------------+
+             |                                       |
+             +-------------------+-------------------+
+                                 |
+                                 v
++---------------------------------------------------------------+
+|                      Customer Personas                        |
+|  Cluster 0: Target High Value (High Income, High Spending)    |
+|  Cluster 1: Conservative (High Income, Low Spending)          |
+|  Cluster 2: Standard Average (Moderate Income & Spending)     |
+|  Cluster 3: Careless / Impulsive (Low Income, High Spending)  |
+|  Cluster 4: Sensible / Budget (Low Income, Low Spending)      |
++---------------------------------------------------------------+
+```
 
-The project follows a standard data science lifecycle:
+---
 
-1. Exploratory data analysis (EDA): Visualizes distributions of age, income,
-   and spending scores.
-2. Feature engineering: Selects relevant features for segmentation and handles
-   data scaling.
-3. Model implementation: Uses K-means and hierarchical clustering to identify
-   and validate distinct customer segments.
-4. Explicability: Interprets clusters to provide actionable business
-   recommendations.
+## Execution Instructions
 
-## Project structure
+Launch Jupyter and open the notebook:
 
-- `customer-segmentation.ipynb`: Contains data cleaning, visualization, and
-  modeling analysis.
-- `customer-segmentation-report.pptx`: Provides an executive summary and
-  business results.
-- `*.png`: Includes exported visualizations like dendrograms and cluster
-  plots.
+```bash
+cd mini-projects/subject-01-ecommerce
+jupyter notebook customer-segmentation.ipynb
+```
 
-## Getting started
+---
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yss-ef/machine-learning-portfolio.git
-   ```
-2. Install dependencies:
-   ```bash
-   pip install pandas numpy scikit-learn matplotlib seaborn
-   ```
-3. Run the analysis in a notebook environment.
+## Technology Stack
 
-Authored by Youssef Fellah.
-Developed for the Engineering Cycle at Mundiapolis University.
+- **Language:** Python 3
+- **Data Engineering:** Pandas, NumPy
+- **Machine Learning:** Scikit-learn (`KMeans`, `AgglomerativeClustering`, `silhouette_score`)
+- **Visualization:** Matplotlib, Seaborn
+
+---
+
+## Author
+
+- **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))
+- **Institution:** Mundiapolis University, Engineering Cycle

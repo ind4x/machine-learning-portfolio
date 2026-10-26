@@ -1,85 +1,93 @@
-# Improving student success: academic performance analysis
+# Improving Student Success: Academic Performance Analysis
 
-This project identifies and analyzes the factors influencing the academic
-performance of high school students in mathematics and Portuguese. It
-combines machine learning analysis with an interactive platform to support
-pedagogical decision-making.
+This capstone project combines deep predictive analytics and unsupervised customer
+segmentation with an interactive Flask decision-support web application, identifying
+key risk factors influencing student outcomes in high school mathematics and language curricula.
 
-## Project objectives
+---
 
-The analysis addresses three primary challenges:
-1. Understanding student profiles through clustering.
-2. Identifying the determining factors of academic success.
-3. Proposing targeted pedagogical actions to reduce academic failure.
+## Project Structure
 
-## Analytical approach
-
-The project uses a structured data pipeline:
-
-```mermaid
-graph TD
-    A[Raw Data] --> B[Exploration and Cleaning]
-    B --> C[Statistical Analysis]
-    C --> D[Machine Learning]
-    D --> D1[K-Means Clustering]
-    D --> D2[Random Forest Importance]
-    D1 --> E[PCA Visualization]
-    D2 --> F[Pedagogical Recommendations]
-    F --> G[Flask Interactive Platform]
+```text
+subject-03-student-success/
+├── README.md                          # Technical specification and architecture overview
+├── student-success-analysis.ipynb     # Interactive exploratory, clustering, and modeling notebook
+├── data/                              # Benchmark student performance datasets
+│   ├── student-mat.csv                # Mathematics course performance records
+│   └── student-por.csv                # Portuguese language course performance records
+└── web-app/                           # Interactive pedagogical decision application
+    ├── app.py                         # Flask application serving inference endpoints
+    ├── run.sh                         # Shell launcher
+    ├── requirements.txt               # App-specific dependencies
+    ├── templates/                     # Jinja2 HTML interfaces
+    │   └── index.html                 # Interactive prediction and student profile dashboard
+    ├── student-mat.csv                # Static runtime dataset reference
+    └── student-por.csv                # Static runtime dataset reference
 ```
 
-## Key results
+### File Responsibilities
 
-### 1. Student profiles
+- **`student-success-analysis.ipynb`**: Complete exploratory data science notebook: correlation analysis, K-Means clustering, Principal Component Analysis (PCA), and Random Forest feature importance calculations.
+- **`web-app/app.py`**: Lightweight Flask web application allowing educators to input student behavioral metrics (study time, past failures, family support, absences) and receive immediate real-time risk level predictions.
 
-The K-means algorithm identified three distinct student profiles:
-- Studious: High motivation, high study time, and low absenteeism.
-- Average: Balanced habits and consistent results.
-- At-risk: High past failure rates, high absenteeism, and low study time.
+---
 
-### 2. Influential factors
+## System Architecture
 
-Using a random forest model, the project quantified the impact of specific
-variables. Past failures and absenteeism were identified as top predictors of
-academic outcome in both subjects.
+```text
++-----------------------+
+| Educational Datasets  |  (Demographic, Behavioral, Historical Grades)
++-----------------------+
+            |
+            v
++-----------------------+
+|  Analytical Modeling  |  - K-Means Clustering (Identifies student cohorts)
+|  & Feature Importance |  - Random Forest Regressor (Ranks failure indicators)
+|                       |  - PCA Dimensionality Reduction (2D visualization)
++-----------------------+
+            |
+            v
++-----------------------+
+| Pedagogical Decision  |  - Identifies at-risk students before final evaluations
+| Guidance Platform     |  - Prescribes targeted tutoring and intervention plans
++-----------------------+
+            |
+            v
++-----------------------+
+| Flask Web Application |  Interactive UI: http://localhost:5000
++-----------------------+
+```
 
-## Pedagogical recommendations
+---
 
-Prioritized actions include:
-- Early prevention: Target students with past failures for specialized
-  tutoring.
-- Engagement: Implement programs to orient students toward higher education.
-- Behavioral monitoring: Closely track absenteeism exceeding five days.
+## Execution Instructions
 
-## Installation and usage
-
-### 1. Prerequisites
-
-Ensure Python 3.8 or later is installed.
+### 1. Running the Machine Learning Notebook
 ```bash
-pip install -r web-app/requirements.txt
+jupyter notebook student-success-analysis.ipynb
 ```
 
-### 2. Interactive platform
-
-Run the Flask application to test models and visualize variable importance in
-real-time:
+### 2. Launching the Interactive Web Application
 ```bash
 cd web-app
-bash run.sh
+pip install -r requirements.txt
+python3 app.py
 ```
+Open `http://127.0.0.1:5000` in your web browser.
 
-### 3. Detailed analysis
+---
 
-The Jupyter notebook contains the complete research code, advanced graphics,
-and mathematical proofs for the clustering analysis.
+## Technology Stack
 
-## Project structure
+- **Language:** Python 3
+- **Data Engineering:** Pandas, NumPy
+- **Machine Learning:** Scikit-learn (`KMeans`, `RandomForestRegressor`, `PCA`)
+- **Web App:** Flask, Jinja2, HTML5/CSS3
+- **Visualization:** Matplotlib, Seaborn
 
-- `student-success-analysis.ipynb`: The exploratory analysis and modeling
-  notebook.
-- `web-app/`: The Flask application directory.
-- `data/`: The original datasets.
+---
 
-Authored by Youssef Fellah.
-Developed for the Engineering Cycle at Mundiapolis University.
+## Author
+
+- **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))
+- **Institution:** Mundiapolis University, Engineering Cycle
